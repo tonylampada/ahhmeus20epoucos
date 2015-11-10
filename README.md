@@ -1,7 +1,7 @@
 # Ahh meus 20 e poucos!
 Dicas de arquitetura que eu gostaria de ter ouvido 10 anos atrás.
 
-Slides: http://tonylampada.github.io/ahhmeus20epoucos
+Slides: http://tonylampada.github.io/ahhmeus20epoucos/
 
 Durante essa palestra aparecem várias referências numeradas.
 Elas se referem aos links abaixo:
