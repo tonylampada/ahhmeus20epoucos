@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Ahh meus 20 e poucos! Dicas de arquitetura que eu gostaria de saber há 10 anos atrás.</title>
+
+		<meta name="description" content="Palestra - Python Brasil 2015">
+		<meta name="author" content="Tony Lâmpada">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Ahh meus 20 e poucos!!</h1>
+					<p>Dicas de arquitetura que eu gostaria de ter ouvido há 10 anos atrás.</p>
+					<ul>
+						<li><small>
+							<a href="http://github.com/tonylampada/ahhmeus20epoucos">
+								<img width="32px" style="border:none; margin: 0" src="img/github2.png">
+								/tonylampada/ahhmeus20epoucos
+							</a>
+						</small></li>
+						<li><small>
+							<a href="http://facebook.com/tonylampada">
+								<img width="32px" style="border:none; margin: 0" src="img/facebook3.png">
+								/tonylampada
+							</a>
+						</small></li>
+
+					</p>
+				</section>
+
+				<section>
+					<p>Tony Lâmpada, quem é vc?</p>
+					<img width="400" src="img/tony.jpg">
+				</section>
+
+				<section>
+					<h2>O que a gente vai falar hoje?</h2>
+					<ol>
+						<li>Design e arquitetura</li>
+						<li>Processo de desenvolvimento</li>
+						<li>Boas práticas + pra web</li>
+					</ol>
+					<p>Tudo isso com uma visão geral, mas com links pra vc se aprofundar um pouco mais</p>
+				</section>
+
+				<section>
+					<h2>1. Sobre Orientação a objeto, responsabilidades, e comida italiana [1]</h2>
+					<img src="img/italian.jpg">
+					<img src="img/rede.png" style="margin: 40px">
+				</section>
+
+				<section>
+					<h3>Sobre Orientação a objeto, responsabilidades, e comida italiana</h3>
+					<ul>
+						<li>OO é "melhor"... mas por quê?</li>
+						<li>Ravioli vs. Spaghetti!</li>
+						<li>E eu vi muito OO: herança, polimorfismo, classes. Tava tudo lá.</li>
+						<li>E o spaghetti sempre achava um jeito de brotar aqui e ali!</li>
+						<li>O tempo passa - e vc começa a pensar em termos de
+							<strong>responsabilidades</strong> e <strong>conhecimento</strong>
+						</li>
+						<li>"Onde vai esse método?"; "Xi, fulano não devia conhecer cicrano..."</li>
+						<li>Parece até uma empresa crescendo!</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Sobre Orientação a objeto, responsabilidades, e comida italiana</h3>
+					<ul>
+						<li>OO --> ravioli! #sqn</li>
+						<li>Componente: um pedaço de software que tem uma(s) RESPONSABILIDADE(s)</li>
+						<li>Componente: de preferência conhece alguns poucos componentes vizinhos</li>
+						<li>Componente: pode ser quebrado em componentes menores</li>
+						<li>É preciso organizar essa malha de modo a <em>facilitar a comunicação entre esses componentes</em></li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Fazer software bem feito é a arte de ser CEO do sistema!</h1>
+				</section>
+
+				<section>
+					<h2>Comunique arquitetura com diagramas CRC</h2>
+				</section>
+
+				<section>
+					<p>Um exemplo: extração de dados</p>
+					<img src="img/crc_extracao.png">
+				</section>
+
+				<section>
+					<p>Outro exemplo: [2] - Faça você mesmo - componente de CRUD com AngularJS</p>
+					<img src="img/crc_crud.png">
+				</section>
+
+				<section>
+					<h3>Não importa seu estilo</h3>
+					<ul>
+						<li>"Meu filho, vc já viu o diagrama?"; ou</li>
+						<li>"Rapaz eu tô enrolado, mas dá uma olhada lá, qq dúvida grita blz?"</li>
+					</ul>
+					<p>A onda é ser <em>preguiçoso</em></p>
+				</section>
+
+				<section>
+					<h3>APIs importam</h3>
+					<pre><code class="hljs" data-trim contenteditable>function CrudModel(model, options){
+	this.model = model;
+	this...
+	this.is_saving = false;
+}
+
+angular.extend(CrudModel.prototype, {
+	list: list,
+	create: create,
+	update: update,
+	remove: remove,
+	cancel: cancel,
+});
+
+function list(){
+	...
+}</code></pre>
+
+					<p>E TDD é uma questão de <em>planejamento</em>!</p>
+				</section>
+
+				<section>
+					<h3>Sobre coesão e acoplamento [3]</h3>
+					<img src="img/coupling_cohesion.png">
+				</section>
+
+				<section>
+					<h2>2. Processo bom erra rápido e corrige rápido [4]</h2>
+					<img width="400px" src="img/foioze.jpg">
+					<img width="400px" style="margin-left: 40px" src="img/ripbug.jpg">
+				</section>
+
+				<section>
+					<h1>As 3 leis da build [5]</h1>
+
+					<p>Como manter um ambiente de integração contínua são</p>
+				</section>
+
+				<section>
+					<h3>1a. lei: Não comitarás em build quebrada.</h3>
+					<p>Se vc quiser fazer um commit mas a branch está quebrada, vc deve providenciar que ela fique verde primeiro: Ou seja, ou vc conserta o que está quebrado, ou vai atrás da pessoa que quebrou pra ela consertar. Só depois que estiver verde, vc pode comitar suas alterações.</p>
+				</section>
+
+				<section>
+					<h3>2a. lei: Se vc quebrar a build, vc tem 20 minutos pra consertar</h3>
+					<p>Mesmo que pra isso vc preciso desfazer seu ultimo commit.</p>
+				</section>
+
+				<section>
+					<h3>3a. lei: volte o commit de quem viola a 2a lei.</h3>
+					<p>Vc pode até ser bonzinho e salvar o commit quebrado do cara numa branch.</p>
+				</section>
+
+				<section>
+					<h3>Na pratica, isso aqui agora é muito raro</h3>
+					<img src="img/jenkins_amigao.png">
+				</section>
+
+				<section>
+					<h1>3. Web developer?</h1>
+					<p>Conheça o Djangular3! [6]</p>
+				</section>
+
+				<section>
+					<h3>O ambiente de desenvolvimento é importante!</h3>
+					<p><em>Se eu tivesse 8 horas para cortar uma árvore, gastaria seis afiando meu machado</em> - Abraham Lincoln</p>
+				</section>
+
+				<section>
+					<h3>Clona e vai trabalhar!</h3>
+					<img src="img/djangular3_devhelp.png">
+				</section>
+
+				<section>
+					<h3>AJAX? Faz um de mentirinha!</h3>
+					<img src="img/djangular3_apimock.png">
+				</section>
+
+				<section>
+					<h3>Tenha um catálogo de componentes</h3>
+					<img src="img/qmdocs.png">
+				</section>
+
+				<section>
+					<h3>Ajax fake + catalogo de componentes = ...</h3>
+					<ul>
+						<li>Ambiente de desenvolvimento simples e rápido pra front-enders</li>
+						<li>Ambiente de prototipação/validação: errar barato!</li>
+						<li>Desenvolva componentes isoladamente: "TPDD"!</li>
+						<li>E ainda viabiliza testes unitários javascript</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Web developer?</h2>
+					<p>Tem mais algumas dicas legais lá no vídeo do Djangular3.</p>
+					<p>Sério. Vai dar uma olhada depois.</p>
+				</section>
+
+				<section>
+					<img src="img/thankyou.jpg">
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
