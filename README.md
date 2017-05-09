@@ -12,3 +12,4 @@ Elas se referem aos links abaixo:
 * [4] [Youtube: Palestra de liquibase - irrelevante, mas os slides são 10!!](https://www.youtube.com/watch?v=hz_2F4Yept8)
 * [5] [Blog post: As 3 leis da build](https://dicasdolampada.wordpress.com/2015/03/05/as-3-leis-da-build/)
 * [6] [Github: Django + AngularJS - webapp completa](https://github.com/tonylampada/djangular3)
+* [7] [Palestra na Python Brasil](https://www.youtube.com/watch?v=GVfISJ3l50c)
